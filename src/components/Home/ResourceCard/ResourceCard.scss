@@ -1,0 +1,17 @@
+.resource-card {
+    &-type {
+        font: var(--saf-type-eyebrow-default-sm-strong-standard);
+        color: var(--saf-color-text-subtle);
+        text-transform: uppercase;
+    }
+
+    &-title {
+        font: var(--saf-type-heading-default-lg-strong-standard);
+        color: var(--saf-color-text-heavy);
+    }
+
+    &-date {
+        font: var(--saf-type-body-default-sm-regular-standard);
+        color: var(--saf-color-text-subtle);
+    }
+}

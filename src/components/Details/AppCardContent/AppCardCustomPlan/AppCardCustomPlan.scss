@@ -1,0 +1,25 @@
+.app-card-custom-plan {
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--saf-color-line-strong);
+    border-radius: 8px;
+    padding: 1.5rem;
+
+    &-title {
+        font: var(--saf-type-heading-default-lg-strong-standard);
+        color: var(--saf-color-text-heavy);
+    }
+
+    &-subtitle {
+        font: var(--saf-type-body-default-md-regular-standard);
+        color: var(--saf-color-text-strong);
+    }
+
+    &-perks {
+        height: 10.5rem;
+        &-text {
+            font: var(--saf-type-body-default-sm-strong-standard);
+            color: var(--saf-color-text-heavy);
+        }
+    }
+}

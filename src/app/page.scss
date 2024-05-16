@@ -1,0 +1,59 @@
+.app-store-home {
+    container-type: inline-size;
+
+    .home-divider {
+        border-color: var(--saf-color-line-subtle);
+    }
+
+    .featured-apps,
+    .advantages {
+        grid-template-rows: auto;
+        grid-auto-rows: auto;
+        grid-template-columns: 1fr;
+    }
+
+    .new-apps,
+    .most-popular-apps,
+    .latest-resources {
+        grid-auto-rows: minmax(100px, auto);
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .essential-apps {
+        grid-template-rows: auto;
+        grid-auto-rows: auto;
+        grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    }
+
+    .section-header-title {
+        font: var(--saf-type-heading-default-2xl-strong-standard);
+        color: var(--saf-color-text-heavy);
+    }
+
+    .content {
+        padding: 1.5rem 2.5rem;
+    }
+
+    .help-section {
+        padding: 1.5rem 2.5rem;
+        background-color: var(--saf-color-background-subtle);
+    }
+
+    @container (min-width: 640px) {
+        .new-apps {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @container (min-width: 768px) {
+        .most-popular-apps {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .featured-apps,
+        .advantages,
+        .latest-resources {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}

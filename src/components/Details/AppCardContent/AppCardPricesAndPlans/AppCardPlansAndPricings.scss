@@ -1,0 +1,17 @@
+.app-cards-plans-pricing-section {
+    &-title {
+        font: var(--saf-type-heading-default-xl-strong-standard);
+        color: var(--saf-color-text-heavy);
+    }
+
+    &-subtitle {
+        font: var(--saf-type-body-default-md-regular-standard);
+        color: var(--saf-color-text-heavy);
+    }
+
+    &-alert {
+        &-hide-cancel::part(alert-btn) {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+.app-card-content {
+    &-title {
+        font: var(--saf-type-heading-default-xl-strong-standard);
+        color: var(--saf-color-text-heavy);
+    }
+
+    &-description {
+        font: var(--saf-type-body-default-md-regular-standard);
+        color: var(--saf-color-text-strong);
+
+        &.shorter {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+    }
+}

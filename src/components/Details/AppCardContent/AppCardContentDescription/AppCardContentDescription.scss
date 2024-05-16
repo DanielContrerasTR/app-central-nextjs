@@ -1,0 +1,13 @@
+.content-description {
+    font: var(--saf-type-body-default-md-regular-standard);
+    color: var(--saf-color-text-strong);
+    max-width: 850px;
+}
+
+.shorter {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

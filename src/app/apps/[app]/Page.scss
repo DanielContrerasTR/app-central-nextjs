@@ -1,0 +1,11 @@
+.details-page {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .details-page-content {
+        display: grid;
+        column-gap: 48px;
+        grid-template-columns: 60% 1fr;
+    }
+}

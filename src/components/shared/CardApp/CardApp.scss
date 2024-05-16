@@ -1,0 +1,24 @@
+.card-app {
+    &-title {
+        font: var(--saf-type-body-default-lg-strong-standard);
+        color: var(--saf-color-text-heavy);
+    }
+
+    &-description {
+        font: var(--saf-type-body-default-sm-regular-standard);
+        color: var(--saf-color-text-strong);
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &-readonly {
+        background: var(--saf-color-background-subtle);
+        border-style: solid;
+        border-width: 1px;
+        border-color: var(--saf-color-line-subtle);
+        border-radius: 8px;
+    }
+}

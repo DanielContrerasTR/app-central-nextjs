@@ -1,0 +1,16 @@
+.faqs-section {
+    &-title {
+        font: var(--saf-type-heading-default-xl-strong-standard);
+        color: var(--saf-color-text-heavy);
+    }
+
+    .question {
+        font: var(--saf-type-body-default-md-strong-standard);
+        color: var(--saf-color-text-heavy);
+    }
+
+    .answer {
+        font: var(--saf-type-body-default-md-regular-standard);
+        color: var(--saf-color-text-strong);
+    }
+}

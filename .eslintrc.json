@@ -1,3 +1,136 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+      "browser": true,
+      "es2016": true,
+      "jest": true
+  },
+  "extends": ["airbnb", "airbnb/hooks", "standard-with-typescript", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+      "project": "tsconfig.eslint.json",
+      "ecmaVersion": "latest",
+      "sourceType": "module",
+      "extraFileExtensions": [".json"]
+  },
+  "plugins": ["react", "simple-import-sort", "import", "prettier", "@typescript-eslint", "react-hooks"],
+  "rules": {
+      "indent": ["error", 4],
+      "max-len": ["error", { "code": 160 }],
+      "comma-dangle": ["error", "never"],
+      "quotes": ["error", "single"],
+      "semi": ["error", "always"],
+      "object-property-newline": ["error", { "allowMultiplePropertiesPerLine": false }],
+      "object-curly-newline": ["error", { "multiline": true }],
+      "no-use-before-define": "off",
+      "no-shadow": "off",
+      "consistent-return": "off",
+      "jsx-quotes": ["error", "prefer-single"],
+      "no-plusplus": "off",
+      // TypeScript
+      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/explicit-member-accessibility": "off",
+      "@typescript-eslint/no-object-literal-type-assertion": "off",
+      "@typescript-eslint/no-empty-function": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/explicit-function-return-type": [
+          "off",
+          {
+              "allowExpressions": false,
+              "allowTypedFunctionExpressions": false,
+              "allowHigherOrderFunctions": false,
+              "allowDirectConstAssertionInArrowFunctions": true,
+              "allowConciseArrowFunctionExpressionsStartingWithVoid": true
+          }
+      ],
+      "@typescript-eslint/no-use-before-define": ["error"],
+      "@typescript-eslint/no-shadow": ["error"],
+      "@typescript-eslint/strict-boolean-expressions": "off",
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/restrict-template-expressions": "off",
+      // React
+      "react/jsx-filename-extension": [
+          "error",
+          {"extensions": [".tsx", "jsx"]}
+      ],
+      "react/react-in-jsx-scope": ["off", {}],
+      "react/prop-types": ["off", {}],
+      "react/jsx-props-no-spreading": ["off", {}],
+      "react/jsx-max-props-per-line": [
+          "error",
+          {
+              "maximum": {
+                  "single": 2,
+                  "multi": 1
+              }
+          }
+      ],
+      "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+      "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
+      "react/jsx-boolean-value": "off",
+      "react/require-default-props": "off",
+      // import
+      "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+      "import/extensions": [
+          "error",
+          "ignorePackages",
+          {
+              "js": "never",
+              "mjs": "never",
+              "jsx": "never",
+              "ts": "never",
+              "tsx": "never"
+          }
+      ],
+      "import/no-unresolved": "warn",
+      "import/prefer-default-export": ["off"]
+  },
+  "overrides": [
+      {
+          "files": ["*.json"],
+          "rules": {
+              "quotes": ["error", "double"],
+              "semi": "off",
+              "max-len": "off",
+              "no-unused-expressions": "off",
+              "@typescript-eslint/no-unused-expressions": "off"
+          }
+      },
+      {
+          "files": ["*.yaml", "*.yml"],
+          "parser": "yaml-eslint-parser",
+          "rules": { "spaced-comment": "off" }
+      },
+      {
+          "files": ["src/**/*reducer*.ts"],
+          "rules": { "no-param-reassign": ["error", { "props": false }] }
+      },
+      {
+          "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
+          "rules": {
+              "simple-import-sort/imports": [
+                  "error",
+                  {
+                      "groups": [
+                          // Style imports.
+                          ["^.+\\.?(css)$"],
+                          // Packages `react` related packages come first.
+                          ["^react", "^@?\\w"],
+                          // Internal packages.
+                          ["^(@|components)(/.*|$)"],
+                          // Side effect imports.
+                          ["^\\u0000"],
+                          // Parent imports. Put `..` last.
+                          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+                          // Other relative imports. Put same-folder imports and `.` last.
+                          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"]
+                      ]
+                  }
+              ]
+          }
+      }
+  ],
+  "settings": {
+      "import/resolver": { "typescript": {} },
+      "import/extensions": [".js", ".ts", ".mjs", ".jsx", ".tsx"]
+  }
 }

@@ -1,0 +1,18 @@
+#app-header {
+    z-index: 100;
+    height: var(--header-height);
+
+    saf-product-header {
+        saf-logo {
+            width: inherit;
+        }
+
+        &::part(navigation) {
+            flex-grow: inherit;
+        }
+    }
+
+    .search-input {
+        max-width: 600px;
+    }
+}
