@@ -15,13 +15,13 @@ export interface AemAppStoreDeveloper {
 }
 
 export interface AemAppStorePlans {
-    name: string;
-    title: string;
-    subTitle: string;
-    description: string;
-    price: string;
-    frequency: string; 
-    recommended: boolean;
+  name: string;
+  title: string;
+  subTitle: string;
+  description: string;
+  price: string;
+  frequency: string;
+  recommended: boolean;
 }
 
 export interface AemAppStoreFaqs {
@@ -47,6 +47,8 @@ export interface AemAppStore {
   securityDocumentUrl: string;
   setupExpectations: string;
   securityCompliance: string;
+  otherIntegrations: string;
+  otherLicenseRequirements: string;
   privacyPolicy: string;
   legalTermsUrl: string;
   helpAndSupportUrl: string;

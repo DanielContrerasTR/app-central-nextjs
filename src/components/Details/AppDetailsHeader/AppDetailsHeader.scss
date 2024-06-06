@@ -1,40 +1,44 @@
 .details-page-header {
-    &-top-container {
-        &-app-name {
-            &-title {
-                font: var(--saf-type-heading-default-3xl-strong-standard);
-                color: var(--saf-color-text-heavy);
-            }
-            &-sub-title {
-                font: var(--saf-type-body-default-sm-regular-standard);
-                color: var(--saf-color-text-subtle);
-            }
-        }
+  img {
+    border-radius: 8px;
+  }
+
+  &-top-container {
+    &-app-name {
+      &-title {
+        font: var(--saf-type-heading-default-3xl-strong-standard);
+        color: var(--saf-color-text-heavy);
+      }
+      &-sub-title {
+        font: var(--saf-type-body-default-sm-regular-standard);
+        color: var(--saf-color-text-subtle);
+      }
     }
-    &-bottom-container {
-        &-title {
-            font: var(--saf-type-body-default-xs-strong-standard);
-            color: var(--saf-color-text-heavy);
-        }
-        &-subtitle {
-            font: var(--saf-type-body-default-sm-regular-standard);
-            color: var(--saf-color-text-strong);
-        }
+  }
+  &-bottom-container {
+    &-title {
+      font: var(--saf-type-body-default-xs-strong-standard);
+      color: var(--saf-color-text-heavy);
+    }
+    &-subtitle {
+      font: var(--saf-type-body-default-sm-regular-standard);
+      color: var(--saf-color-text-strong);
+    }
+  }
+
+  &-content {
+    &-right {
+      min-width: 0;
     }
 
-    &-content {
-        &-right {
-            min-width: 0;
-        }
-
-        &-developer {
-            &-name {
-                font: var(--saf-type-body-default-md-regular-standard);
-            }
-        }
-
-        .app-detail-actions {
-            row-gap: 8px;
-        }
+    &-developer {
+      &-name {
+        font: var(--saf-type-body-default-md-regular-standard);
+      }
     }
+
+    .app-detail-actions {
+      row-gap: 8px;
+    }
+  }
 }

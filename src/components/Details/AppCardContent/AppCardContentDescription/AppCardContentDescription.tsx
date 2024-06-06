@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
 import "./AppCardContentDescription.scss";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
 import { WithCompleteDescription } from "app/types/WithCompleteDescription";
@@ -21,12 +21,31 @@ export function AppCardContentDescription({
   useCompleteDescription,
 }: AppCardContentDescriptionProps) {
   const [showMore, setShowMore] = useState(false);
+  const descriptionRef = useRef<HTMLDivElement>(null);
 
   const descriptionClass = `content-description ${
     !showMore && !useCompleteDescription ? "shorter" : ""
   }`;
-
   const detailsToShowText = showMore ? "Less details" : "More details";
+
+  useEffect(() => {
+    const handleFocusIn = (event: FocusEvent) => {
+      if (descriptionRef.current?.contains(event.target as Node)) {
+        descriptionRef.current.classList.remove("shorter");
+      }
+    };
+
+    const currentRef = descriptionRef.current;
+    if (currentRef) {
+      currentRef.addEventListener("focusin", handleFocusIn);
+    }
+
+    return () => {
+      if (currentRef) {
+        currentRef.removeEventListener("focusin", handleFocusIn);
+      }
+    };
+  }, [showMore]);
 
   return (
     <>
@@ -34,6 +53,7 @@ export function AppCardContentDescription({
         <div
           className={descriptionClass}
           dangerouslySetInnerHTML={{ __html: description }}
+          ref={descriptionRef}
         />
       </div>
       {!useCompleteDescription && (

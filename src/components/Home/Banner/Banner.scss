@@ -1,9 +1,9 @@
 .browse-apps-banner {
-    background-image: url("/banner-background.svg");
-    padding: 64px 40px;
-    background-size: contain;
-    &-header {
-        font: var(--saf-type-heading-default-3xl-strong-standard);
-        color: var(--saf-color-text-heavy);
-    }
+  background-image: url("/banner-background.svg");
+  padding: 64px 40px;
+  background-size: contain;
+  &-header {
+    font: var(--saf-type-heading-default-3xl-strong-standard);
+    color: var(--saf-color-text-heavy);
+  }
 }

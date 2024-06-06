@@ -47,10 +47,11 @@ const AppDetails = (props: AppDetailsProps) => {
   // const { resetPurchaseWizardState } = usePurchaseWizard();
   // const { navigate } = useCustomNavigate();
 
-  // const onContactUsHandler = useCallback(() => {
-  //   resetPurchaseWizardState();
-  //   navigate(`/en-us/apps/${toSlugCase(app?.title ?? "")}/contact-sales`);
-  // }, [navigate, resetPurchaseWizardState, app?.title]);
+  //   const onContactUsHandler = useCallback(() => {
+  //     resetPurchaseWizardState();
+  //     setSourceUrl(window.location.href);
+  //     navigate(`${ROUTE_PATHS.appsPage}/${slug}/contact-sales`);
+  // }, [navigate, resetPurchaseWizardState, slug, setSourceUrl]);
 
   const appIcon = getSource(app?.icon);
 
@@ -71,12 +72,20 @@ const AppDetails = (props: AppDetailsProps) => {
     faqs,
     htmlDescription,
     video,
+    policies,
   } = app;
 
   const { capabilities, categories, supportedLanguages } = details;
 
-  const { timeToLaunch, integrations, licenses, security, setup } =
-    setupSecurity;
+  const {
+    timeToLaunch,
+    integrations,
+    licenses,
+    security,
+    setup,
+    setupDocumentUrl,
+    securityDocumentUrl,
+  } = setupSecurity;
 
   return (
     <>
@@ -87,14 +96,14 @@ const AppDetails = (props: AppDetailsProps) => {
         <SafBreadcrumbItem>{title}</SafBreadcrumbItem>
       </Breadcrumb>
       <div
-        className="p-4 gap-5 d-flex flex-column details-page"
+        className="gap-4 d-flex flex-column details-page"
         data-testid="details-page"
       >
         <AppDetailsHeader
           startingPrice={plans[0].price}
           appIcon={appIcon}
           {...app}
-          onBuyClick={() => {}}
+          // onBuyClick={onContactUsHandler}
         />
         <div>
           <Gallery images={carrousel} video={video} />
@@ -121,12 +130,16 @@ const AppDetails = (props: AppDetailsProps) => {
             <AppCardContentList
               title="Setup"
               content={setup}
+              appTitle={title}
+              anchorHref={setupDocumentUrl}
               anchorText="View setup guide"
             />
             <AppCardContentList title="Time to launch" content={timeToLaunch} />
             <AppCardContentList
               title="Security compliance"
               content={security}
+              appTitle={title}
+              anchorHref={securityDocumentUrl}
               anchorText="View security document"
             />
             <AppCardContentList
@@ -148,29 +161,29 @@ const AppDetails = (props: AppDetailsProps) => {
                 label="Website"
               />
               <ContactItem
-                url={vendor.website}
+                url={vendor.support}
                 iconName="circle-question"
                 label="Support"
               />
               <ContactItem
-                url={vendor.email}
+                url={`mailto:${vendor.email}`}
                 iconName="envelope"
                 label="Email"
               />
             </AppDetailsItem>
             <AppDetailsItem title="Policies">
               <ContactItem
-                url={vendor.website}
+                url={policies?.returnPolicy}
                 iconName="arrow-up"
                 label="Return policies"
               />
               <ContactItem
-                url={vendor.website}
+                url={policies?.privacyPolicy}
                 iconName="hand"
                 label="Privacy policy"
               />
               <ContactItem
-                url={vendor.email}
+                url={policies.legalTermsOfUsePolicy}
                 iconName="file-contract"
                 label="Legal terms"
               />
@@ -179,8 +192,11 @@ const AppDetails = (props: AppDetailsProps) => {
         </AppCardContent>
         <AppCardPlansAndPricings plans={plans} hasButtons={false} />
         <AppCardCustomPlan />
-        <ContactUsButton onBuyClick={() => {}} />
-        <SafDivider />
+        <ContactUsButton
+          // onBuyClick={onContactUsHandler}
+          id="2"
+        />
+        <SafDivider className="details-divider" />
         <FaqsSection faqs={faqs} />
       </div>
     </>

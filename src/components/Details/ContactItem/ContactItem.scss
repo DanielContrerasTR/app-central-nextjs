@@ -1,5 +1,10 @@
-.developer-contact {
-    h3 {
-        font: var(--saf-type-heading-default-lg-strong-standard);
-    }
+.contact-item {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
 }

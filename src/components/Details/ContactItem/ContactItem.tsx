@@ -18,11 +18,11 @@ interface ContactItemProps {
 
 export function ContactItem({ label, url, iconName }: ContactItemProps) {
   return (
-    <div className="d-flex gap-2">
-      <div slot="start" className="w-10">
+    <ul className="d-flex gap-2 contact-item">
+      <li slot="start" className="w-10">
         <SafIcon iconName={iconName} />
-      </div>
+      </li>
       <SafAnchor href={url}>{label}</SafAnchor>
-    </div>
+    </ul>
   );
 }

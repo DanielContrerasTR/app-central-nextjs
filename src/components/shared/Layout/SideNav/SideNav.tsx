@@ -1,9 +1,9 @@
 import { type SafMenuItemInstance } from "@saffron/core-components";
 import { useRouter } from "next/navigation";
-
-import { useSideNav } from "./useSideNav";
 import { ROUTE_PATHS } from "app/shared/const";
 import dynamic from "next/dynamic";
+
+import { useSideNav } from "./useSideNav";
 
 const SafIcon = dynamic(
   () => import("@saffron/core-components/react").then(module => module.SafIcon),

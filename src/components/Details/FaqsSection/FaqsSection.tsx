@@ -3,6 +3,8 @@ import "./FaqsSection.scss";
 import dynamic from "next/dynamic";
 
 import { Faq } from "app/types/AppStore";
+import { ROUTE_PATHS } from "app/shared/const";
+import Link from "next/link";
 
 const SafAnchor = dynamic(
   () =>
@@ -16,19 +18,19 @@ interface FaqsSectionProps {
 
 export function FaqsSection({ faqs }: FaqsSectionProps) {
   return (
-    <div className="d-flex flex-column gap-4 pt-4 faqs-section">
+    <div className="d-flex flex-column gap-4 faqs-section pb-5">
       <div className="d-flex w-100 align-items-center justify-content-between">
-        <span className="faqs-section-title">Frequently asked questions</span>
+        <h2 className="faqs-section-title">Frequently asked questions</h2>
       </div>
       <div className="d-flex flex-column gap-3">
         {faqs.map(({ question, answer }) => (
-          <div key={question} className="d-flex flex-column">
-            <span className="question">{question}</span>
-            <span className="answer">{answer}</span>
-          </div>
+          <dl key={question} className="d-flex flex-column">
+            <dt className="question">{question}</dt>
+            <dd className="answer">{answer}</dd>
+          </dl>
         ))}
       </div>
-      <SafAnchor>Go to FAQs</SafAnchor>
+      <Link href={ROUTE_PATHS.faqPage}>Go to FAQs</Link>
     </div>
   );
 }

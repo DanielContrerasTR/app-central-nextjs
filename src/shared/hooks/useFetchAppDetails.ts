@@ -5,6 +5,8 @@ import { type AppStore } from "../../types/AppStore";
 import StoreApi from "../utils/StoreApi";
 import { useGlobalLoader } from "./useGlobalLoader";
 import { useRouter } from "next/navigation";
+import { transformToAppStore } from "../utils/TransformToAppStore";
+import { ROUTE_PATHS } from "../const";
 
 // import { useCustomNavigate } from "./useCustomNavigate";
 
@@ -20,14 +22,12 @@ const useFetchAppDetails = () => {
     let data: AppStore | null = null;
 
     try {
-      //   if (id === "evelyn" || id === "syncly") {
-      //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      //     const response = await StoreApi.getAppDetailsByName(id);
-      //     data = transformToAppStore(response);
-      //   } else {
-      //     data = await StoreApi.getAppDetails(id);
-      //   }
-      data = await StoreApi.getAppDetails(id);
+      if (id === "evelyn" || id === "syncly") {
+        const response = await StoreApi.getAppDetailsByName(id);
+        data = transformToAppStore(response);
+      } else {
+        data = await StoreApi.getAppDetails(id);
+      }
       return data;
     } catch (e) {
       // eslint-disable-next-line no-console
@@ -55,7 +55,7 @@ export const useAppDetailsOnLoad = (id: string | undefined) => {
       const response = await fetchAppDetailsById(id);
 
       if (!response) {
-        router.push("/404");
+        router.push(ROUTE_PATHS.notFoundPage);
         return;
       }
       setApp(response);

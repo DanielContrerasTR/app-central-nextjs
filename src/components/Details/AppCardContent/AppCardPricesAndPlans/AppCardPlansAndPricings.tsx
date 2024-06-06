@@ -42,11 +42,11 @@ export function AppCardPlansAndPricings(props: AppCardPlansAndPricingsProps) {
 
   return (
     <div className="app-cards-plans-pricing-section d-flex flex-column gap-3">
-      <span className="app-cards-plans-pricing-section-title">
+      <h2 className="app-cards-plans-pricing-section-title">
         {title ?? defaultTitle}
-      </span>
+      </h2>
       <span className="app-cards-plans-pricing-section-subtitle">
-        {subtitle ?? defaultSubtitle}
+        {subtitle}
       </span>
       {alert && (
         <SafAlert
@@ -56,7 +56,7 @@ export function AppCardPlansAndPricings(props: AppCardPlansAndPricingsProps) {
           {alert.message}
         </SafAlert>
       )}
-      <div className="d-flex gap-4 justify-content-around">
+      <div className="d-flex gap-4 justify-content-around plans-and-pricing-container">
         {plans.map(plan => (
           <PlanPricingCard
             {...plan}

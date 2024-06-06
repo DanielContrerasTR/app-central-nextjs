@@ -1,7 +1,9 @@
-import dynamic from "next/dynamic";
 import "./ContactUsButton.scss";
 
+import dynamic from "next/dynamic";
 import type { MouseEventHandler } from "react";
+
+import { WithId } from "app/types/WithId";
 
 const SafButton = dynamic(
   () =>
@@ -18,19 +20,21 @@ const SafIcon = dynamic(
   { ssr: false }
 );
 
-interface ContactUsButtonProps {
+interface ContactUsButtonProps extends WithId<string> {
   onBuyClick?: MouseEventHandler;
 }
 
-export function ContactUsButton({ onBuyClick }: ContactUsButtonProps) {
+export function ContactUsButton({ onBuyClick, id }: ContactUsButtonProps) {
   return (
     <div className="contact-us-button d-flex">
-      <SafButton onClick={onBuyClick}>Contact us</SafButton>
+      <SafButton onClick={onBuyClick} role="link">
+        Contact sales
+      </SafButton>
       <div>
-        <SafTooltip anchor="anchor-overview" placement="bottom-end">
+        <SafTooltip anchor={`anchor-overview-${id}`} placement="bottom-end">
           A sales representative will contact you within 2 to 4 business days.
         </SafTooltip>
-        <SafButton appearance="tertiary" id="anchor-overview">
+        <SafButton appearance="tertiary" id={`anchor-overview-${id}`}>
           <SafIcon
             iconName="info-circle"
             data-testid="details-item-info-icon"

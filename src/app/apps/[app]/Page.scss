@@ -1,11 +1,16 @@
 .details-page {
-    width: 100%;
+  width: 100%;
+  padding: 2.5rem;
+}
+
+.details-divider {
+  border-color: var(--saf-color-line-subtle);
 }
 
 @media (min-width: 768px) {
-    .details-page-content {
-        display: grid;
-        column-gap: 48px;
-        grid-template-columns: 60% 1fr;
-    }
+  .details-page-content {
+    display: grid;
+    column-gap: 48px;
+    grid-template-columns: 60% 1fr;
+  }
 }

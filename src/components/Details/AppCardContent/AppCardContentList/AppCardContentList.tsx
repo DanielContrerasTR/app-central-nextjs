@@ -15,15 +15,19 @@ const SafIcon = dynamic(
 interface AppCardContentListProps {
   title: string;
   content: string[] | string;
+  anchorHref?: string;
   anchorText?: string;
   isInfo?: boolean;
+  appTitle?: string;
 }
 
 export function AppCardContentList({
   title,
   content,
+  anchorHref,
   anchorText,
   isInfo,
+  appTitle,
 }: AppCardContentListProps) {
   // eslint-disable-next-line @typescript-eslint/no-shadow
   const parseContent = (content: string[] | string) => {
@@ -40,10 +44,12 @@ export function AppCardContentList({
     return <span>{content}</span>;
   };
 
+  const ariaLabel = `${anchorText} for ${appTitle} `;
+
   return (
-    <div className="d-flex flex-column gap-2 w-100">
-      <div className="d-flex gap-2">
-        <span className="content-list-title">{title}</span>
+    <dl className="d-flex flex-column gap-2 w-100">
+      <dt className="content-list-title d-flex gap-2">
+        {title}
         {isInfo && (
           <SafIcon
             slot="end"
@@ -51,11 +57,15 @@ export function AppCardContentList({
             data-testid="details-item-info-icon"
           />
         )}
-      </div>
-      <div className="content-list-content d-flex gap-1 flex-column">
+      </dt>
+      <dd className="content-list-content d-flex gap-1 flex-column">
         {parseContent(content)}
-      </div>
-      {anchorText && <SafAnchor>{anchorText}</SafAnchor>}
-    </div>
+      </dd>
+      {anchorText && (
+        <SafAnchor aria-label={ariaLabel} href={anchorHref}>
+          {anchorText}
+        </SafAnchor>
+      )}
+    </dl>
   );
 }

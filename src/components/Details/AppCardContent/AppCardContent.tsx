@@ -18,13 +18,13 @@ export function AppCardContent({ title, children }: AppCardContentProps) {
     <div className="d-flex flex-column gap-5">
       <div className="gap-2 d-flex flex-column">
         <div className="app-card-content gap-2 d-flex flex-column">
-          <span className="fst-normal mt-2 mb-2 app-card-content-title">
+          <h2 className="fst-normal mt-2 mb-2 app-card-content-title">
             {title}
-          </span>
+          </h2>
           {children}
         </div>
       </div>
-      <SafDivider />
+      <SafDivider className="details-divider" />
     </div>
   );
 }

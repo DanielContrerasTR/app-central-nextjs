@@ -78,7 +78,7 @@ export default function Home() {
         <SafDivider className="mb-4 home-divider" />
 
         <div className="d-flex justify-content-between align-items-center w-100">
-          <span className="section-header-title">Most popular</span>
+          <span className="section-header-title">Newly released</span>
           <SafButton
             appearance="tertiary"
             onClick={() => {

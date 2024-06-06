@@ -27,6 +27,7 @@ export function VideoSlide({
       <SwiperSlide
         onClick={onClick}
         data-testid={testId ?? "video-slide-playable"}
+        tabIndex={0}
       >
         <div className="d-flex align-items-center justify-content-center w-100 h-100">
           <iframe
@@ -45,6 +46,7 @@ export function VideoSlide({
     <SwiperSlide
       onClick={onClick}
       data-testid={testId ?? "video-slide-non-playable"}
+      tabIndex={0}
     >
       <div
         className="d-flex align-items-center justify-content-center w-100 h-100 video-slide-no-playable"

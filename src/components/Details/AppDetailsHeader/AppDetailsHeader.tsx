@@ -41,7 +41,7 @@ export function AppDetailsHeader(props: AppDetailsHeaderProps) {
 
   return (
     <div className="details-page-header d-flex gap-4">
-      <Image src={appIcon} alt="app icon" width={140} height={140} />
+      <Image src={appIcon} alt={title} width={140} height={140} />
       <div className="w-100 d-flex flex-column gap-3">
         <div className="details-page-header-top-container d-flex justify-content-between gap-3">
           <div className="details-page-header-top-container-app-name d-flex flex-column">
@@ -53,11 +53,11 @@ export function AppDetailsHeader(props: AppDetailsHeaderProps) {
             </span>
           </div>
           <div className="details-page-header-top-container-call-to-action-buttons d-flex">
-            <ContactUsButton onBuyClick={onBuyClick} />
+            <ContactUsButton onBuyClick={onBuyClick} id="1" />
           </div>
         </div>
-        <SafDivider />
-        <div className="details-page-header-bottom-container d-flex gap-4">
+        <SafDivider className="details-divider" />
+        <div className="details-page-header-bottom-container d-flex align-items-center gap-4">
           <div className="d-flex flex-column gap-2">
             <span className="details-page-header-bottom-container-title">
               Works with

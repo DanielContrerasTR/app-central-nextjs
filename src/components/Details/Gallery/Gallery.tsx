@@ -63,29 +63,34 @@ export function Gallery({ images, video }: GalleryProps) {
         className="lower-carrousel"
         data-testid="gallery-carrousel"
       >
-        {video && (
-          <VideoSlide
-            src={videoImage}
-            onClick={() => {
-              swiperRef?.slideTo(0);
-              openModal();
-            }}
-            data-testid="gallery-video-slide"
-          />
-        )}
-        {(video ? restImages : images).map((img, index) => (
-          <SwiperSlide
-            key={img}
-            onClick={() => {
-              const slideIndex = video ? index + 1 : index + 1;
-              swiperRef?.slideTo(slideIndex);
-              openModal();
-            }}
-            data-testid={`gallery-image-slide-${index}`}
-          >
-            <img src={img} alt={`gallery-${index}`} className="d-block" />
-          </SwiperSlide>
-        ))}
+        <div>
+          {video && (
+            <VideoSlide
+              src={videoImage}
+              onClick={() => {
+                swiperRef?.slideTo(0);
+                openModal();
+              }}
+              data-testid="gallery-video-slide"
+            />
+          )}
+          {(video ? restImages : images).map((img, index) => (
+            <SwiperSlide
+              key={img}
+              onClick={() => {
+                const slideIndex = video ? index + 1 : index + 1;
+                swiperRef?.slideTo(slideIndex);
+                openModal();
+              }}
+              data-testid={`gallery-image-slide-${index}`}
+              role="region"
+              aria-label="gallery"
+              tabIndex={0}
+            >
+              <img src={img} alt={`gallery-${index}`} className="d-block" />
+            </SwiperSlide>
+          ))}
+        </div>
       </Swiper>
 
       <SafDialog

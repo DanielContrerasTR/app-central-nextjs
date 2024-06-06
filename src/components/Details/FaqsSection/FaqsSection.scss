@@ -1,16 +1,21 @@
 .faqs-section {
-    &-title {
-        font: var(--saf-type-heading-default-xl-strong-standard);
-        color: var(--saf-color-text-heavy);
-    }
+  h2 {
+    margin: 0;
+  }
 
-    .question {
-        font: var(--saf-type-body-default-md-strong-standard);
-        color: var(--saf-color-text-heavy);
-    }
+  &-title {
+    font: var(--saf-type-heading-default-xl-strong-standard);
+    color: var(--saf-color-text-heavy);
+  }
 
-    .answer {
-        font: var(--saf-type-body-default-md-regular-standard);
-        color: var(--saf-color-text-strong);
-    }
+  .question {
+    font: var(--saf-type-body-default-md-strong-standard);
+    color: var(--saf-color-text-heavy);
+  }
+
+  .answer {
+    margin: 0;
+    font: var(--saf-type-body-default-md-regular-standard);
+    color: var(--saf-color-text-strong);
+  }
 }
