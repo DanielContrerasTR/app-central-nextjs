@@ -1,6 +1,5 @@
 import { type SafMenuItemInstance } from "@saffron/core-components";
-
-// import { useCustomNavigate } from "../../../shared/hooks/useCustomNavigate";
+import { useRouter } from "next/navigation";
 
 import { useSideNav } from "./useSideNav";
 import { ROUTE_PATHS } from "app/shared/const";
@@ -51,7 +50,7 @@ const isSelected = (path: string) =>
   window.location.pathname === `/${path}`.replace("//", "/");
 
 const useGoTo = () => {
-  //   const { navigateBase } = useCustomNavigate();
+  const router = useRouter();
 
   const navigate = (
     event: React.FormEvent<SafMenuItemInstance> & {
@@ -60,7 +59,7 @@ const useGoTo = () => {
     path: string
   ) => {
     event.stopPropagation();
-    // navigateBase(path);
+    router.push(path);
   };
 
   return { navigate };

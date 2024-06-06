@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { type AppStore } from "../../types/AppStore";
 import StoreApi from "../utils/StoreApi";
 import { useGlobalLoader } from "./useGlobalLoader";
+import { useRouter } from "next/navigation";
 
 // import { useCustomNavigate } from "./useCustomNavigate";
 
@@ -42,7 +43,7 @@ const useFetchAppDetails = () => {
 
 export const useAppDetailsOnLoad = (id: string | undefined) => {
   const [app, setApp] = useState<AppStore>();
-  //   const { navigate } = useCustomNavigate();
+  const router = useRouter();
   const { fetchAppDetailsById } = useFetchAppDetails();
 
   useEffect(() => {
@@ -54,7 +55,7 @@ export const useAppDetailsOnLoad = (id: string | undefined) => {
       const response = await fetchAppDetailsById(id);
 
       if (!response) {
-        // navigate("/404");
+        router.push("/404");
         return;
       }
       setApp(response);

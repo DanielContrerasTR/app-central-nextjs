@@ -37,7 +37,6 @@ const Apps = () => {
 
   return (
     <div className="apps-page" data-testid="apps-page">
-      {/* <HelmetTags title={pageTitle} /> */}
       <Breadcrumb>
         <SafBreadcrumbItem href={ROUTE_PATHS.homePage}>Home</SafBreadcrumbItem>
         <SafBreadcrumbItem>{pageTitle}</SafBreadcrumbItem>

@@ -48,7 +48,6 @@ export default function Home() {
 
   return (
     <div className="app-store-home" data-testid="home-page">
-      {/* <HelmetTags title={SITE_NAME} /> */}
       <Banner className="w-100" />
       <div className="content">
         <div className="d-flex justify-content-between align-items-center w-100">

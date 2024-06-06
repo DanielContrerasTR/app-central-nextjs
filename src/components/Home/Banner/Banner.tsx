@@ -2,6 +2,7 @@ import "./Banner.scss";
 
 import { WithOptionalClassName } from "app/types/WithOptionalClassName";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 
 const SafButton = dynamic(
   () =>
@@ -14,7 +15,7 @@ const SafIcon = dynamic(
 );
 
 export function Banner({ className = "" }: WithOptionalClassName) {
-  //   const { navigate } = useCustomNavigate();
+  const router = useRouter();
 
   return (
     <div className={`d-flex gap-3 browse-apps-banner ${className}`}>
@@ -27,7 +28,7 @@ export function Banner({ className = "" }: WithOptionalClassName) {
           appearance="secondary"
           className="mt-4 me-3"
           onClick={() => {
-            // navigate("/en-us/about");
+            router.push("/about");
           }}
         >
           Learn more
@@ -36,7 +37,7 @@ export function Banner({ className = "" }: WithOptionalClassName) {
           appearance="primary"
           className="mt-4"
           onClick={() => {
-            // navigate("/en-us/apps");
+            router.push("/apps");
           }}
         >
           Browse apps

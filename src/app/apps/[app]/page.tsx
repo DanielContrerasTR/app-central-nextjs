@@ -1,6 +1,6 @@
 "use client";
 
-import "./Page.scss";
+import "./page.scss";
 
 import dynamic from "next/dynamic";
 import { ROUTE_PATHS } from "app/shared/const";
