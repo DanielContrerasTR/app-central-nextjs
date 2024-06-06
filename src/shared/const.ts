@@ -6,36 +6,36 @@ export const FILTER_CATEGORIES: FilterCategory[] = [
     name: "Works with",
     filters: [
       {
-        id: "clear",
+        id: "CLEAR",
         name: "CLEAR",
       },
       {
-        id: "cocounsel",
+        id: "CoCounsel",
         name: "CoCounsel",
       },
       {
-        id: "highq",
+        id: "HighQ",
         name: "HighQ",
       },
       {
-        id: "legal-tracker",
+        id: "Legal Tracker",
         name: "Legal Tracker",
       },
       {
-        id: "onesource-tax-determination",
+        id: "ONESOURCE Tax Determination",
         name: "ONESOURCE Tax Determination",
       },
       {
-        id: "practical-law",
+        id: "Practical Law",
         name: "Practical Law",
       },
       {
-        id: "litigation-analytics",
+        id: "Litigation Analytics",
         name: "Litigation Analytics",
       },
       {
-        id: "data-hub",
-        name: "Data Hub",
+        id: "ONESOURCE Data Hub",
+        name: "ONESOURCE Data Hub",
       },
     ],
   },
@@ -44,31 +44,31 @@ export const FILTER_CATEGORIES: FilterCategory[] = [
     name: "Categories",
     filters: [
       {
-        id: "featured",
+        id: "Featured",
         name: "Featured",
       },
       {
-        id: "most-popular",
+        id: "Most Popular",
         name: "Most Popular",
       },
       {
-        id: "newly-released",
+        id: "Newly released",
         name: "Newly released",
       },
       {
-        id: "best-selling",
+        id: "Best selling",
         name: "Best selling",
       },
       {
-        id: "legal",
+        id: "Legal",
         name: "Legal",
       },
       {
-        id: "tax-and-accounting",
+        id: "Tax and Accounting",
         name: "Tax and Accounting",
       },
       {
-        id: "risk-and-fraud",
+        id: "Risk and Fraud",
         name: "Risk and Fraud",
       },
     ],
@@ -78,80 +78,32 @@ export const FILTER_CATEGORIES: FilterCategory[] = [
     name: "Capabilities",
     filters: [
       {
-        id: "ai-drafting",
-        name: "AI drafting",
+        id: "Customer operations",
+        name: "Customer operations",
       },
       {
-        id: "alert-review",
-        name: "Alert review",
+        id: "Exemption certificates",
+        name: "Exemption certificates",
       },
       {
-        id: "data-analytics",
-        name: "Data analytics",
+        id: "Partner master data",
+        name: "Partner master data",
       },
       {
-        id: "data-retrieval",
-        name: "Data retrieval",
+        id: "Data and document management",
+        name: "Data and document management",
       },
       {
-        id: "data-visualization",
-        name: "Data visualization",
+        id: "Data access",
+        name: "Data access",
       },
       {
-        id: "document-retrieval",
-        name: "Document-retrieval",
+        id: "Data validation",
+        name: "Data validation",
       },
       {
-        id: "document-review",
-        name: "Document review",
-      },
-      {
-        id: "document-synchronization",
-        name: "Document synchronization",
-      },
-      {
-        id: "id-verification",
-        name: "ID verification",
-      },
-      {
-        id: "legal-data-and-document-sync",
-        name: "Legal data and document sync",
-      },
-      {
-        id: "legal-data-management",
-        name: "Legal data management",
-      },
-      {
-        id: "legal-document-management",
-        name: "Legal document management",
-      },
-      {
-        id: "payment-integrity",
-        name: "Payment integrity",
-      },
-      {
-        id: "regional-tax-rules",
-        name: "Regional tax rules",
-      },
-      {
-        id: "risk-analysis",
-        name: "Risk analysis",
-      },
-      {
-        id: "synchronize-workflows",
-        name: "Synchronize workflows",
-      },
-      {
-        id: "tax-calculations",
-        name: "Tax calculations",
-      },
-      {
-        id: "transactional-sanctions-screening",
-        name: "Transactional sanctions screening",
-      },
-      {
-        id: "workflow-automation",
-        name: "Workflow automation",
+        id: "Document management",
+        name: "Document management",
       },
     ],
   },
@@ -160,23 +112,23 @@ export const FILTER_CATEGORIES: FilterCategory[] = [
     name: "Developed by",
     filters: [
       {
-        id: "thomson-reuters",
+        id: "Thomson Reuters",
         name: "Thomson Reuters",
       },
       {
-        id: "baker-tilly",
+        id: "Baker Tilly",
         name: "Baker Tilly",
       },
       {
-        id: "seeunity",
+        id: "SeeUnity",
         name: "SeeUnity",
       },
       {
-        id: "syncly",
-        name: "Syncly",
+        id: "Syncly Ltd.",
+        name: "Syncly Ltd.",
       },
       {
-        id: "workfusion",
+        id: "Workfusion",
         name: "Workfusion",
       },
     ],

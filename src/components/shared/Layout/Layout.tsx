@@ -1,3 +1,5 @@
+"use client";
+
 import "./Layout.scss";
 
 import { Footer } from "./Footer/Footer";

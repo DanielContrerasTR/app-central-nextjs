@@ -4,6 +4,7 @@ import { type MouseEventHandler } from "react";
 import dynamic from "next/dynamic";
 
 import { ContactUsButton } from "../ContactUsButton/ContactUsButton";
+import Image from "next/image";
 
 const SafBadge = dynamic(
   () =>
@@ -40,7 +41,7 @@ export function AppDetailsHeader(props: AppDetailsHeaderProps) {
 
   return (
     <div className="details-page-header d-flex gap-4">
-      <img src={appIcon} alt="app icon" width={140} height={140} />
+      <Image src={appIcon} alt="app icon" width={140} height={140} />
       <div className="w-100 d-flex flex-column gap-3">
         <div className="details-page-header-top-container d-flex justify-content-between gap-3">
           <div className="details-page-header-top-container-app-name d-flex flex-column">

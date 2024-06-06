@@ -1,13 +1,8 @@
 import Link from "next/link";
 import { CardApp, type CardAppProps } from "../CardApp";
-import { toSlugCase } from "app/shared/utils/common-utils";
 
-interface LinkCardAppProps extends CardAppProps {}
-
-export function LinkCardApp(props: LinkCardAppProps) {
-  const { title } = props;
-
-  const slug = toSlugCase(title);
+export function LinkCardApp(props: CardAppProps) {
+  const { slug } = props;
 
   return (
     <Link

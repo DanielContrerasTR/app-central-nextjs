@@ -1,27 +1,22 @@
 import {
   createAsyncThunk,
   createSlice,
-  //   isPending,
-  //   isRejected,
   type PayloadAction,
 } from "@reduxjs/toolkit";
 
-// import { SearcherMock } from "../../components/AppStoreSearch/app-store-searcher-mock";
-// import { sortBy } from "../../components/SortButton/sort.utils";
 import {
+  AppStoreFetchParams,
   type AppStore,
-  //   type AppStoreFetchParams,
   type Resource,
 } from "../../types/AppStore";
 import { type TopCategory } from "../../types/FilterCategory";
-// import { type CoveoSearchParams } from "../../utils/StoreApi/CoveoSearch";
 import StoreApi from "../utils/StoreApi";
-// import { type QueryFilters } from "../hooks/useQueryFilters";
 
-// import { coveoToAppStore } from "./coveoToAppStore.utils";
 import { serializeAxiosError } from "./reducer.utils";
 import { GlobalLoaderHandler } from "app/components/shared/GlobalLoader/GlobalLoaderHandler";
-// import { AvailableFilters } from "../const";
+import { AvailableFilters } from "../const";
+import { CoveoSearchParams } from "app/types/CoveoSearch";
+import { coveoToAppStore } from "./coveoToAppStore.utils";
 
 export const initialState = {
   query: "",
@@ -38,29 +33,17 @@ export const initialState = {
 
 export type AppStoreState = Readonly<typeof initialState>;
 
-// Actions
-// export const getApps = createAsyncThunk(
-//   "appStore/getApps",
-//   async (params: AppStoreFetchParams, { dispatch }): Promise<AppStore[]> => {
-//     const searcherHandler = async () => {
-//       const searcher = new SearcherMock();
-//       const apps = await searcher.search(params);
-//       return apps;
-//     };
-
-//     const globalLoaderHandler = new GlobalLoaderHandler(dispatch);
-//     const apps = await globalLoaderHandler.run(searcherHandler);
-
-//     return apps;
-//   },
-//   { serializeError: serializeAxiosError }
-// );
-
 export const getAllApps = createAsyncThunk(
   "appStore/getAll",
-  async (_, { dispatch }) => {
+  async (appStoreFetchParams: AppStoreFetchParams, { dispatch }) => {
+    const getAllAppsHandler = async () => {
+      const searchParams = getSearchParams(appStoreFetchParams);
+      const response = await StoreApi.getAll(searchParams);
+      const apps = coveoToAppStore(response.results);
+      return apps;
+    };
     const globalLoaderHandler = new GlobalLoaderHandler(dispatch);
-    const apps = await globalLoaderHandler.run(StoreApi.getAll);
+    const apps = await globalLoaderHandler.run(getAllAppsHandler);
     return apps;
   },
   { serializeError: serializeAxiosError }
@@ -70,8 +53,9 @@ export const getFeaturedApps = createAsyncThunk(
   "appStore/getFeaturedApps",
   async (_, { dispatch }) => {
     const globalLoaderHandler = new GlobalLoaderHandler(dispatch);
-    const apps = await globalLoaderHandler.run(StoreApi.getFeatured);
-    return apps;
+    const response = await globalLoaderHandler.run(StoreApi.getFeatured);
+    const apps = coveoToAppStore(response.results);
+    return apps.slice(0, 3);
   },
   { serializeError: serializeAxiosError }
 );
@@ -80,8 +64,9 @@ export const getMostPopularApps = createAsyncThunk(
   "appStore/getMostPopularApps",
   async (_, { dispatch }) => {
     const globalLoaderHandler = new GlobalLoaderHandler(dispatch);
-    const apps = await globalLoaderHandler.run(StoreApi.getMostPopular);
-    return apps;
+    const response = await globalLoaderHandler.run(StoreApi.getMostPopular);
+    const apps = coveoToAppStore(response.results);
+    return apps.slice(0, 6);
   },
   { serializeError: serializeAxiosError }
 );
@@ -106,46 +91,6 @@ export const getTopCategories = createAsyncThunk(
   { serializeError: serializeAxiosError }
 );
 
-// export const searchAppsWithCoveo = createAsyncThunk(
-//   "appStore/searchAppsCoveo",
-//   async (params: AppStoreFetchParams, { dispatch }): Promise<AppStore[]> => {
-//     const searcherHandler = async () => {
-//       const { title, queryFilters, sort } = params;
-
-//       // eslint-disable-next-line @typescript-eslint/no-shadow
-//       const getQueryFiltersByName =
-//         (queryFilters: QueryFilters | undefined) =>
-//         (filterId: AvailableFilters) =>
-//           queryFilters?.[filterId] ?? [];
-
-//       const getByName = getQueryFiltersByName(queryFilters);
-
-//       const query: CoveoSearchParams = {
-//         q: title,
-//         categories: getByName("categories"),
-//         capabilities: getByName("capabilities"),
-//         industries: getByName("industries"),
-//         worksWith: getByName("works-with"),
-//         developers: getByName("developer"),
-//         languages: getByName("languages"),
-//       };
-
-//       const response = await StoreApi.coveoSearch(query);
-//       const apps = coveoToAppStore(response);
-//       // TODO: This should be done in the backend later
-//       const sortedApps = sortBy(apps, sort);
-
-//       return sortedApps;
-//     };
-
-//     const globalLoaderHandler = new GlobalLoaderHandler(dispatch);
-//     const apps = await globalLoaderHandler.run(searcherHandler);
-
-//     return apps;
-//   },
-//   { serializeError: serializeAxiosError }
-// );
-
 export const AppStoreSlice = createSlice({
   name: "appStore",
   initialState: initialState as AppStoreState,
@@ -168,12 +113,6 @@ export const AppStoreSlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      //   .addCase(searchAppsWithCoveo.fulfilled, (state, action) => {
-      //     state.coveoResults = action.payload;
-      //   })
-      //   .addCase(getApps.fulfilled, (state, action) => {
-      //     state.apps = action.payload;
-      //   })
       .addCase(getAllApps.fulfilled, (state, action) => {
         state.apps = action.payload;
       })
@@ -189,12 +128,6 @@ export const AppStoreSlice = createSlice({
       .addCase(getTopCategories.fulfilled, (state, action) => {
         state.topCategories = action.payload;
       });
-    //   .addMatcher(isPending(getApps, searchAppsWithCoveo), state => {
-    //     state.errorMessage = null;
-    //   })
-    //   .addMatcher(isRejected(getApps, searchAppsWithCoveo), (state, action) => {
-    //     state.errorMessage = action.error.message ?? null;
-    //   });
   },
 });
 
@@ -202,3 +135,34 @@ export const { reset, add, updateQuery, setMessage, toggleIsInstalled } =
   AppStoreSlice.actions;
 
 export const AppStoreReducer = AppStoreSlice.reducer;
+
+const getSearchParams = (appStoreFetchParams: AppStoreFetchParams) => {
+  const {
+    title,
+    queryFilters,
+    sort: sortField,
+    sortOrder,
+  } = appStoreFetchParams;
+
+  // eslint-disable-next-line @typescript-eslint/no-shadow
+  const getQueryFiltersByName =
+    (queryFilters: Record<string, string[]> | undefined) =>
+    (filterId: AvailableFilters) =>
+      queryFilters?.[filterId] ?? [];
+
+  const getByName = getQueryFiltersByName(queryFilters);
+
+  const params: CoveoSearchParams = {
+    q: title,
+    categories: getByName("categories"),
+    capabilities: getByName("capabilities"),
+    industries: getByName("industries"),
+    worksWith: getByName("works-with"),
+    developers: getByName("developer"),
+    languages: getByName("languages"),
+    sortField,
+    sortOrder,
+  };
+
+  return params;
+};

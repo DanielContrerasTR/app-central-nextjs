@@ -1,5 +1,3 @@
-"use client";
-
 import "./Banner.scss";
 
 import { WithOptionalClassName } from "app/types/WithOptionalClassName";

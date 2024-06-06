@@ -5,6 +5,10 @@ import axios, { type Axios } from "axios";
 import { type AemAppStore } from "../../types/AemAppStore";
 import { type AppStore, type Resource } from "../../types/AppStore";
 import { type TopCategory } from "../../types/FilterCategory";
+import {
+  CoveoSearchParams,
+  CoveoSearchResponseV2,
+} from "app/types/CoveoSearch";
 
 // import {
 //   type CoveoSearchParams,
@@ -13,22 +17,28 @@ import { type TopCategory } from "../../types/FilterCategory";
 // import { type CoveoSearchResponseMocked } from "./StoreApi.types";
 
 const client: Axios = axios.create({
-  baseURL:
-    "https://api-dev.thomsonreuters.com/developer-experience/appstore/v1",
+  baseURL: process.env.NEXT_PUBLIC_APP_STORE_BASE_URL,
 });
 
-async function getAll() {
-  const { data } = await client.get<AppStore[]>("/apps");
+async function getAll(
+  params: CoveoSearchParams
+): Promise<CoveoSearchResponseV2> {
+  const { data } = await client.post<CoveoSearchResponseV2>(
+    "/apps/list",
+    params
+  );
   return data;
 }
 
-async function getFeatured() {
-  const { data } = await client.get<AppStore[]>("/apps/featured");
+async function getFeatured(): Promise<CoveoSearchResponseV2> {
+  const { data } = await client.get<CoveoSearchResponseV2>("/apps/featured");
   return data;
 }
 
-async function getMostPopular() {
-  const { data } = await client.get<AppStore[]>("/apps/most-popular");
+async function getMostPopular(): Promise<CoveoSearchResponseV2> {
+  const { data } = await client.get<CoveoSearchResponseV2>(
+    "/apps/most-popular"
+  );
   return data;
 }
 
@@ -36,23 +46,6 @@ async function getAppDetails(appId: string) {
   const { data } = await client.get<AppStore>(`/apps/${appId}`);
   return data;
 }
-
-// async function coveoSearch(
-//   params: CoveoSearchParams
-// ): Promise<CoveoSearchResponseV2> {
-//   const { data } = await client.post("/apps/coveo-search", params);
-//   return data;
-// }
-
-// async function coveoSearchMock(
-//   params: CoveoSearchParams
-// ): Promise<CoveoSearchResponseMocked> {
-//   const { data } = await client.post<CoveoSearchResponseMocked>(
-//     "/search/coveo-mock",
-//     params
-//   );
-//   return data;
-// }
 
 async function getLatestResources() {
   const { data } = await client.get<Resource[]>("/resources/latest");

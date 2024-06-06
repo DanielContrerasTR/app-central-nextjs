@@ -1,3 +1,5 @@
+"use client";
+
 import "./GlobalLoader.scss";
 
 import dynamic from "next/dynamic";

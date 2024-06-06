@@ -27,7 +27,7 @@ export const useAppStore = () => {
   //   };
 
   const fetchAllApps = () => {
-    void dispatch(getAllApps());
+    void dispatch(getAllApps({}));
   };
   const fetchFeaturedApps = () => {
     void dispatch(getFeaturedApps());
