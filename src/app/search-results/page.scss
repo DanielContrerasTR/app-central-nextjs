@@ -1,0 +1,17 @@
+.search-page {
+    .section-header-title {
+        /* 
+            Overriding default styles from AppsPage.scss
+            Find a better way to extend/override these styles
+        */
+        font: var(--saf-type-body-default-lg-regular-standard) !important;
+        color: var(--saf-color-text-strong) !important;
+    }
+
+    .query-length {
+        font: var(--saf-color-text-strong);
+        font-weight: var(--saf-font-weight-bold);
+        size: var(--saf-font-size-lg);
+        line-height: var(--saf-line-height-lg);
+    }
+}

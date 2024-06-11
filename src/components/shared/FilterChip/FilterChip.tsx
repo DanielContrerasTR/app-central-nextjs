@@ -1,4 +1,5 @@
 import { FILTER_CATEGORIES } from "app/shared/const";
+import { useQueryFilters } from "app/shared/hooks/useQueryFilters";
 import dynamic from "next/dynamic";
 
 const SafChip = dynamic(
@@ -11,7 +12,7 @@ interface FilterChipProps {
 }
 
 export function FilterChip({ filterId }: FilterChipProps) {
-  //   const { deleteFilter } = useQueryFilters();
+    const { deleteFilter } = useQueryFilters();
 
   const category = FILTER_CATEGORIES.find(cat =>
     cat.filters.some(filter => filter.id === filterId)
@@ -20,7 +21,7 @@ export function FilterChip({ filterId }: FilterChipProps) {
 
   const onClose = () => {
     if (category && filter) {
-      //   deleteFilter(category.id, filter.id);
+        deleteFilter(category.id, filter.id);
     }
   };
 

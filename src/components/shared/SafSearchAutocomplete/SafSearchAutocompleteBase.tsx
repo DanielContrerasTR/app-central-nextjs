@@ -1,8 +1,10 @@
+"use client"
+
 import "./SafSearchAutocompleteBase.scss";
 
 import { useEffect, useRef, useState } from "react";
 import {
-  type SafListboxInstance,
+  SafListboxInstance,
   type SafSearchFieldInstance,
 } from "@saffron/core-components";
 
@@ -11,6 +13,7 @@ import { SafLoadingSuggestion } from "./SafLoadingSuggestion";
 import dynamic from "next/dynamic";
 import { useOutsideClick } from "app/shared/hooks/useOutsideClick";
 import { WithSafTarget } from "app/types/WithSafTarget";
+import { SafListInstance } from "@saffron/core-components/umd";
 
 const SafListbox = dynamic(
   () =>
@@ -76,7 +79,7 @@ export function SafSearchAutocompleteBase(
   const wrapperRef = useRef<HTMLDivElement>(null);
   useOutsideClick(wrapperRef, cleanSuggestions);
 
-  const safListboxRef = useRef<SafListboxInstance>(null);
+  const listBoxContainer = useRef<HTMLDivElement>(null);
 
   /**
    * Start the async process passed as prop.
@@ -142,15 +145,17 @@ export function SafSearchAutocompleteBase(
   const isArrowUp = (e: SafSearchFieldOnKeyDownEvent) => e.key === "ArrowUp";
 
   const handleKeyDown = (e: SafSearchFieldOnKeyDownEvent) => {
+    const safListboxRef = listBoxContainer?.current?.firstChild as SafListboxInstance | null;
+    
     if (isEnterKey(e)) {
       // When the user is using the keyboard and a selectedIndex from the suggestion list exists
       // the search is going to be made using the label from the suggestion list.
       if (
-        safListboxRef?.current?.selectedIndex !== undefined &&
-        safListboxRef?.current?.selectedIndex > -1
+        safListboxRef?.selectedIndex !== undefined &&
+        safListboxRef?.selectedIndex > -1
       ) {
         const selectedSuggestion = suggestions.at(
-          safListboxRef?.current?.selectedIndex
+          safListboxRef?.selectedIndex
         ) as ListBoxOption;
         setInputValue(selectedSuggestion.label);
         onSelectSuggestion(selectedSuggestion);
@@ -164,12 +169,12 @@ export function SafSearchAutocompleteBase(
 
     if (suggestions.length) {
       if (isArrowDown(e)) {
-        safListboxRef?.current?.selectNextOption();
+        safListboxRef?.selectNextOption();
         return;
       }
 
       if (isArrowUp(e)) {
-        safListboxRef?.current?.selectPreviousOption();
+        safListboxRef?.selectPreviousOption();
       }
     }
   };
@@ -194,34 +199,39 @@ export function SafSearchAutocompleteBase(
         />
         <div className="suggestions">
           <SafLoadingSuggestion isLoading={isLoading} />
-          {!!suggestions.length && (
-            <SafListbox
-              density="inherit"
-              aria-label="listbox"
-              ref={safListboxRef}
-            >
-              {suggestions.map(suggestion => {
-                const { value, label } = suggestion;
+          {/* TODO: Remove this trick */}
+          <div ref={listBoxContainer} hidden={suggestions.length === 0}>
+            {!!suggestions.length && (
+                <SafListbox
+                  density="inherit"
+                  aria-label="listbox"
+                  
+                >
+                  {suggestions.map(suggestion => {
+                    const { value, label } = suggestion;
 
-                return (
-                  <SafListboxOption
-                    key={value}
-                    value={value}
-                    onClick={() => {
-                      onSelectSuggestion(suggestion);
-                    }}
-                  >
-                    <SafHighlightedSuggestion
-                      suggestion={label}
-                      inputValue={inputValue}
-                    />
-                  </SafListboxOption>
-                );
-              })}
-            </SafListbox>
-          )}
+                    return (
+                      <SafListboxOption
+                        key={value}
+                        value={value}
+                        onClick={() => {
+                          onSelectSuggestion(suggestion);
+                        }}
+                      >
+                        <SafHighlightedSuggestion
+                          suggestion={label}
+                          inputValue={inputValue}
+                        />
+                      </SafListboxOption>
+                    );
+                  })}
+                </SafListbox>
+            )}
+          </div>
         </div>
       </div>
     </div>
   );
 }
+
+export default SafSearchAutocompleteBase;
