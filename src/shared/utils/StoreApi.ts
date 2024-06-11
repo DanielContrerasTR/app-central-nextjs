@@ -1,7 +1,7 @@
 // import "../../config/envConfig";
 
-import axios, { type Axios } from "axios";
 
+import { client } from "./AxiosClient";
 import { type AemAppStore } from "../../types/AemAppStore";
 import { type AppStore, type Resource } from "../../types/AppStore";
 import { type TopCategory } from "../../types/FilterCategory";
@@ -15,10 +15,6 @@ import {
 //   type CoveoSearchResponseV2,
 // } from "./CoveoSearch";
 // import { type CoveoSearchResponseMocked } from "./StoreApi.types";
-
-const client: Axios = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_APP_STORE_BASE_URL,
-});
 
 async function getAll(
   params: CoveoSearchParams

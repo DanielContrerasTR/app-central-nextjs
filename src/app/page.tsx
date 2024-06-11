@@ -6,6 +6,7 @@ import { Banner } from "app/components/Home/Banner";
 import { ResourceCard } from "app/components/Home/ResourceCard";
 import { TopCategory } from "app/components/Home/TopCategory";
 import { LinkCardApp } from "app/components/shared/LinkCardApp";
+import { ROUTE_PATHS } from "app/shared/const";
 import { useAppStore } from "app/shared/hooks/useAppstore";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -124,7 +125,7 @@ export default function Home() {
             description="New to the App Central? Check out the FAQs."
             link={{
               text: "Go to FAQs",
-              url: "/",
+              url: ROUTE_PATHS.faqPage,
             }}
           />
           <ResourceCard
