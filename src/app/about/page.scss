@@ -1,0 +1,80 @@
+.about-page {
+    font: var(--saf-type-body-default-md-regular-standard);
+    color: var(--saf-color-text-strong);
+
+    .page-title {
+        font: var(--saf-type-heading-default-3xl-strong-standard);
+        color: var(--saf-color-text-heavy);
+    }
+
+    .about-content {
+        .advantages-wrapper {
+            width: 100%;
+            container-type: inline-size;
+            background-color: rgba(243, 249, 255, 1);
+            border-radius: 1.5rem;
+
+            > p {
+                margin: 0;
+                padding-bottom: 3rem;
+                font: var(--saf-type-heading-default-xl-strong-standard);
+                color: var(--saf-color-text-heavy);
+            }
+
+            table {
+                display: inline-table;
+
+                p:nth-child(2) {
+                    margin: 0;
+                    padding-top: 0.5rem;
+                    padding-bottom: 0.5rem;
+                    font: var(--saf-type-heading-default-lg-strong-standard);
+                    color: var(--saf-color-text-heavy);
+                }
+
+                p:nth-child(3) {
+                    margin: 0;
+                }
+
+                td {
+                    padding-right: 1.5rem;
+                    padding-left: 1.5rem;
+                    word-wrap: break-word;
+                    overflow-wrap: break-word;
+                    word-break: break-word;
+                    white-space: normal;
+                    vertical-align: top;
+                }
+            }
+        }
+
+        @container (max-width: 768px) {
+            .advantages-wrapper {
+                width: auto;
+
+                table {
+                    display: block;
+                }
+                td {
+                    display: block;
+                }
+            }
+        }
+
+        .body-content {
+            > p {
+                margin: 0;
+            }
+
+            h3 {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+
+            li {
+                margin-left: 1.5rem;
+                padding-bottom: 1rem;
+            }
+        }
+    }
+}
