@@ -1,0 +1,33 @@
+{
+    "totalCount": 1,
+    "results": [
+        {
+            "appName": "Evelyn",
+            "uri": "https://devex-app-store-mfe-dev.1554.aws.thomsonreuters.com/apps/evelyn",
+            "icon": "https://www-tr-com-qa-ams.ewp.thomsonreuters.com/content/dam/appstore/evelyn/media/app-icon.jpg",
+            "thumbnails": "https://www-tr-com-qa-ams.ewp.thomsonreuters.com/content/dam/appstore/syncly/media/syncly-cover.jpg",
+            "description": "description",
+            "excerpt": "",
+            "categories": [
+                "Featured",
+                "Risk management and investigations"
+            ],
+            "capabilities": [
+                "Fraud pattern identification",
+                "AI powered legal research"
+            ],
+            "industry": [
+                "Risk and Fraud"
+            ],
+            "workswith": [
+                "CLEAR"
+            ],
+            "developer": "WorkFusion Inc",
+            "documenttype": "WebPage",
+            "language": [
+                "English",
+                "Spanish"
+            ]
+        }
+    ]
+}

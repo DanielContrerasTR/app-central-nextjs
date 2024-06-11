@@ -10,12 +10,6 @@ import {
   CoveoSearchResponseV2,
 } from "app/types/CoveoSearch";
 
-// import {
-//   type CoveoSearchParams,
-//   type CoveoSearchResponseV2,
-// } from "./CoveoSearch";
-// import { type CoveoSearchResponseMocked } from "./StoreApi.types";
-
 const client: Axios = axios.create({
   baseURL: process.env.NEXT_PUBLIC_APP_STORE_BASE_URL,
 });
@@ -71,6 +65,11 @@ async function getAppDetailsByName(name: string) {
   return data;
 }
 
+async function coveoSearch(params: CoveoSearchParams): Promise<CoveoSearchResponseV2> {
+  const { data } = await client.post<CoveoSearchResponseV2>('/apps/coveo-search', params);
+  return data;
+}
+
 export default {
   getAppDetailsByPath,
   getAppDetailsByName,
@@ -78,8 +77,7 @@ export default {
   getFeatured,
   getMostPopular,
   getAppDetails,
-  //   coveoSearch,
-  //   coveoSearchMock,
+  coveoSearch,
   getLatestResources,
   getTopCategories,
 };

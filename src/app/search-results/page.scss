@@ -1,0 +1,15 @@
+@import '../apps/page.scss';
+
+.search-page {
+    .section-header-title {
+        font: var(--saf-type-body-default-lg-regular-standard);
+        color: var(--saf-color-text-strong);
+    }
+
+    .query-length {
+        font: var(--saf-color-text-strong);
+        font-weight: var(--saf-font-weight-bold);
+        size: var(--saf-font-size-lg);
+        line-height: var(--saf-line-height-lg);
+    }
+}
