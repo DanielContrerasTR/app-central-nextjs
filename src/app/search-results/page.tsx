@@ -47,7 +47,6 @@ export function SearchPage() {
     return (
         // TODO: Is it necessary to add a base layout??
         <div className='p-4 apps-page search-page' data-testid='search-page'>
-            {/* <HelmetTags title='Search results' /> */}
             <div className='apps-page-content'>
                 <div className='d-flex justify-content-between align-items-center w-100 mb-3'>
                     <h1 className='section-header-title'>
