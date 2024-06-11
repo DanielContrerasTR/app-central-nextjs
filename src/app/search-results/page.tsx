@@ -60,7 +60,6 @@ export function SearchPage() {
 
                 <AppStoreCardSearchResults />
             </div>
-            <div className='d-flex gap-3 flex-column' />
         </div>
     );
 }

@@ -66,7 +66,7 @@ export const useSearchAutocomplete = () => {
         setQuery(query);
         const updatedSearchParams = createQueryString('q', query);
         // TODO: Find a better way to prevent losing url search params
-        navigateBase.replace(`/search-results?${updatedSearchParams}`)
+        navigateBase.replace(`/search-results?${updatedSearchParams}`);
         
         updateQueryValue(query);
     };
