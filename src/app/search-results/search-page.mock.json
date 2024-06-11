@@ -1,0 +1,110 @@
+[
+  {
+    "id": "1687300110613",
+    "icon": "NetSuite-icon.svg",
+    "title": "NetSuite",
+    "developerName": "Syncly Ltd.",
+    "periodicity": "year",
+    "worksWith": "HighQ",
+    "coverImage": "NetSuite-cover.svg",
+    "carrousel": [
+      "https://picsum.photos/480/360",
+      "https://picsum.photos/id/3/480/360",
+      "https://picsum.photos/id/33/480/360"
+    ],
+    "details": {
+      "categories": [
+        "Legal data and document management"
+      ],
+      "capabilities": [
+        "Data and document management, Product master data, Data retrieval",
+        "Data and document management, Product master data, Data retrieval",
+        "Data and document management, Product master data, Data retrieval"
+      ],
+      "supportedLanguages": [
+        "English,",
+        "Spanish",
+        "Frnch"
+      ]
+    },
+    "setupSecurity": {
+      "setup": "Minimal technical skills required to complete the initial setup.",
+      "timeToLaunch": "2 to 3 weeks.",
+      "security": "SOC 2, GDPR, 256bit AES encryption.",
+      "integrations": [
+        "Optional integration to core banking, ERP, or third party systems is available upon request at an additional cost."
+      ],
+      "licenses": [
+        "none"
+      ]
+    },
+    "description": "Syncly seamlessly integrates with HighQ to securely sync legal data and documents in real-time across your tech stack, eliminating the need for manual uploads and ensures that all parties have access to the most up-to-date information.",
+    "vendor": {
+      "website": "http://www.thomson-reuters.com",
+      "email": "appsales@thomsonreuters.com",
+      "address": "499 Oren Manors, New Jude, WI 61151",
+      "phone": "1 800 555 5555",
+      "feedback": "http://appfeedback-forum.com"
+    },
+    "policies": {
+      "returnPolicy": "http://www.thomson-reuters.com",
+      "privacyPolicy": "http://www.thomson-reuters.com",
+      "legalTermsOfUsePolicy": "http://www.thomson-reuters.com"
+    },
+    "plans": [
+      {
+        "title": "Basic",
+        "price": 899,
+        "periodicity": "year",
+        "subtitle": "Suitable for start-ups or small-sized firms.",
+        "perks": [
+          "Up to 50 users",
+          "Access to all app features",
+          "Automatic renewal, cancel anytime",
+          "$200 one-time setup fee."
+        ],
+        "recommended": false
+      },
+      {
+        "title": "Advance",
+        "price": 1699,
+        "periodicity": "year",
+        "subtitle": "Suitable for start-ups or small-sized firms.",
+        "perks": [
+          "Up to 50 users",
+          "Access to all app features",
+          "Automatic renewal, cancel anytime",
+          "$200 one-time setup fee."
+        ],
+        "recommended": true
+      },
+      {
+        "title": "Premium",
+        "price": 2200,
+        "periodicity": "year",
+        "subtitle": "Suitable for start-ups or small-sized firms.",
+        "perks": [
+          "Up to 50 users",
+          "Access to all app features",
+          "Automatic renewal, cancel anytime",
+          "$200 one-time setup fee."
+        ],
+        "recommended": false
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How secure is Syncly?",
+        "answer": "Syncly is trusted by some of the largest global banks and law firms. It’s SOC2 compliant and have built in many security related features to further our position."
+      },
+      {
+        "question": "How does it work with my Thomson Reuters product?",
+        "answer": "Syncly connect to HighQ or iManage and works seamlessly in the background. You’ll receive email notifications once archivals are complete."
+      },
+      {
+        "question": "Does Syncly store my data?",
+        "answer": "No, Syncly does not store any of the data it handles for you."
+      }
+    ]
+  }
+]

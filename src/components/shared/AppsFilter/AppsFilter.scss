@@ -1,0 +1,54 @@
+.apps-filter {
+    &-button {
+        min-width: 120px;
+
+        &-counter {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+        }
+    }
+
+    &-drawer {
+        &::part(control) {
+            --saf-color-line-strong: transparent;
+        }
+
+        &::part(content) {
+            padding-top: 0;
+        }
+
+        &::part(drawer-headings) {
+            display: flex;
+            align-items: end;
+        }
+
+        saf-faceted-filter {
+            --saf-color-line-strong: var(--saf-color-gray-400);
+
+            &::part(filter-header) {
+                --saf-divider-borderColor: transparent;
+            }
+
+            &::part(filter-title) {
+                display: none;
+            }
+
+            saf-facet-category {
+                padding: 8px 0;
+            }
+
+            saf-facet-category:not(:first-child) {
+                border-top: 1px solid var(--saf-color-line-strong);
+            }
+
+            saf-facet-item {
+                padding: 8px 0;
+
+                &::part(number-of-items) {
+                    display: none;
+                }
+            }
+        }
+    }
+}

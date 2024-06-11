@@ -1,6 +1,8 @@
 import {
   createAsyncThunk,
   createSlice,
+  isPending,
+  isRejected,
   type PayloadAction,
 } from "@reduxjs/toolkit";
 
@@ -91,6 +93,24 @@ export const getTopCategories = createAsyncThunk(
   { serializeError: serializeAxiosError }
 );
 
+export const searchAppsWithCoveo = createAsyncThunk(
+  'appStore/searchAppsCoveo',
+  async (appStoreFetchParams: AppStoreFetchParams, { dispatch }): Promise<AppStore[]> => {
+      const searcherHandler = async () => {
+          const searchParams = getSearchParams(appStoreFetchParams);
+          const response = await StoreApi.coveoSearch(searchParams);
+          const apps = coveoToAppStore(response.results);
+          return apps;
+      };
+
+      const globalLoaderHandler = new GlobalLoaderHandler(dispatch);
+      const apps = await globalLoaderHandler.run(searcherHandler);
+
+      return apps;
+  },
+  { serializeError: serializeAxiosError }
+);
+
 export const AppStoreSlice = createSlice({
   name: "appStore",
   initialState: initialState as AppStoreState,
@@ -127,6 +147,15 @@ export const AppStoreSlice = createSlice({
       })
       .addCase(getTopCategories.fulfilled, (state, action) => {
         state.topCategories = action.payload;
+      })
+      .addCase(searchAppsWithCoveo.fulfilled, (state, action) => {
+        state.coveoResults = action.payload;
+      })
+      .addMatcher(isPending(searchAppsWithCoveo), state => {
+        state.errorMessage = null;
+      })
+      .addMatcher(isRejected(searchAppsWithCoveo), (state, action) => {
+          state.errorMessage = action.error.message ?? null;
       });
   },
 });

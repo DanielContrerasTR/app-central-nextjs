@@ -1,8 +1,7 @@
 import "./Header.scss";
 
 import dynamic from "next/dynamic";
-
-// import { SafSearchAutocomplete } from "../../SafSearchAutocomplete/SafSearchAutocomplete";
+import SafSearchAutocomplete from "../../SafSearchAutocomplete/SafSearchAutocomplete";
 
 const SafButton = dynamic(
   () =>
@@ -46,7 +45,7 @@ export function Header() {
           slot="logo"
           className="d-flex flex-fill justify-content-between search-input"
         >
-          <div className="search">{/* <SafSearchAutocomplete /> */}</div>
+          <div className="search"><SafSearchAutocomplete /></div>
         </div>
 
         <div slot="global">
