@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import "./ContactItem.scss";
 
 const SafIcon = dynamic(
   () => import("@saffron/core-components/react").then(module => module.SafIcon),

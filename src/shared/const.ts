@@ -156,6 +156,6 @@ export const ROUTE_PATHS = {
   purchasePage: `${BASE_PATH}purchase`,
   searchResultsPage: `${BASE_PATH}search-results`,
   developersPage: `${BASE_PATH}developers`,
-  faqPage: `${BASE_PATH}/faq`,
+  faqPage: `${BASE_PATH}faq`,
   notFoundPage: "/404",
 };

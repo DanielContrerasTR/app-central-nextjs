@@ -1,0 +1,22 @@
+.faq-page {
+    .page-title {
+        font: var(--saf-type-heading-default-3xl-strong-standard);
+        color: var(--saf-color-text-heavy);
+    }
+
+    .faq-content {
+        h3 {
+            margin: 0;
+            padding-bottom: 0.5rem;
+            font: var(--saf-type-heading-default-md-strong-standard);
+            color: var(--saf-color-text-heavy);
+        }
+
+        p {
+            margin: 0;
+            padding-bottom: 1.5rem;
+            font: var(--saf-type-body-default-md-regular-standard);
+            color: var(--saf-color-text-strong);
+        }
+    }
+}
