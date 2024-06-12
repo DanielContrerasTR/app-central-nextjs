@@ -1,6 +1,6 @@
 "use client";
 
-import "./page.scss";
+import "./Page.scss";
 
 import dynamic from "next/dynamic";
 import { ROUTE_PATHS } from "app/shared/const";
@@ -18,6 +18,8 @@ import { Gallery } from "app/components/Details/Gallery/Gallery";
 import { AppCardContentDescription } from "app/components/Details/AppCardContent/AppCardContentDescription/AppCardContentDescription";
 import { useAppDetailsOnLoad } from "app/shared/hooks/useFetchAppDetails";
 import { useGetSource } from "app/shared/hooks/useGetSource";
+import { useCallback } from "react";
+import { useCustomNavigate } from "app/shared/hooks/useCustomNavigate";
 
 const SafDivider = dynamic(
   () =>
@@ -44,14 +46,14 @@ export const AppDetails = (props: AppDetailsProps) => {
   const { getSource } = useGetSource();
 
   const { app } = useAppDetailsOnLoad(slug);
-  // const { resetPurchaseWizardState } = usePurchaseWizard();
-  // const { navigate } = useCustomNavigate();
+  //const { resetPurchaseWizardState } = usePurchaseWizard();
+  const { navigate } = useCustomNavigate();
 
-  //   const onContactUsHandler = useCallback(() => {
-  //     resetPurchaseWizardState();
-  //     setSourceUrl(window.location.href);
-  //     navigate(`${ROUTE_PATHS.appsPage}/${slug}/contact-sales`);
-  // }, [navigate, resetPurchaseWizardState, slug, setSourceUrl]);
+    const onContactUsHandler = useCallback(() => {
+      //resetPurchaseWizardState();
+      //setSourceUrl(window.location.href);
+      navigate(`${ROUTE_PATHS.appsPage}/${slug}/contact-sales`);
+  }, [navigate, slug]);
 
   const appIcon = getSource(app?.icon);
 
@@ -103,7 +105,7 @@ export const AppDetails = (props: AppDetailsProps) => {
           startingPrice={plans[0].price}
           appIcon={appIcon}
           {...app}
-          // onBuyClick={onContactUsHandler}
+          onBuyClick={onContactUsHandler}
         />
         <div>
           <Gallery images={carrousel} video={video} />
