@@ -12,7 +12,7 @@ import { useCallback } from 'react';
 export const useSearchAutocomplete = () => {
     const pathname = usePathname();
     
-    const { navigate, navigateBase } = useCustomNavigate();
+    const { navigateBase } = useCustomNavigate();
 
     const { updateQueryValue, reset } = useAppStoreQuery();
 
@@ -22,15 +22,15 @@ export const useSearchAutocomplete = () => {
 
     // Get a new searchParams string by merging the current
   // searchParams with a provided key/value pair
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      params.set(name, value);
- 
-      return params.toString();
-    },
-    [searchParams]
-  );
+    const createQueryString = useCallback(
+        (name: string, value: string) => {
+        const params = new URLSearchParams(searchParams.toString());
+        params.set(name, value);
+    
+        return params.toString();
+        },
+        [searchParams]
+    );
 
     const query = getQueryParam('q');
 

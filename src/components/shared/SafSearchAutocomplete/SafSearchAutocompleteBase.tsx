@@ -53,18 +53,13 @@ interface SafSearchAutocompleteBaseProps {
   searchAutocompleteHandler: (query: string) => Promise<ListBoxOption[]>;
   clearHandler: () => void;
   initialInputValue?: string;
+  autocompleteDisabled?: boolean;
 }
 
 export function SafSearchAutocompleteBase(
   props: SafSearchAutocompleteBaseProps
 ) {
-  const {
-    searchAutocompleteHandler,
-    onGlobalSearch,
-    clearHandler,
-    onSelectedSuggestion,
-    initialInputValue,
-  } = props;
+  const { searchAutocompleteHandler, onGlobalSearch, clearHandler, onSelectedSuggestion, initialInputValue, autocompleteDisabled } = props;
 
   const [inputValue, setInputValue] = useState("");
 
@@ -88,7 +83,7 @@ export function SafSearchAutocompleteBase(
    * @param query
    */
   const searchAutocomplete = async (query: string) => {
-    if (!query) {
+    if (!query || autocompleteDisabled) {
       return;
     }
 
@@ -139,10 +134,9 @@ export function SafSearchAutocompleteBase(
     void onSelectedSuggestion(option);
   };
 
-  const isEnterKey = (e: SafSearchFieldOnKeyDownEvent) => e.key === "Enter";
-  const isArrowDown = (e: SafSearchFieldOnKeyDownEvent) =>
-    e.key === "ArrowDown";
-  const isArrowUp = (e: SafSearchFieldOnKeyDownEvent) => e.key === "ArrowUp";
+  const isEnterKey = (e: SafSearchFieldOnKeyDownEvent) => e.key === 'Enter';
+  const isArrowDown = (e: SafSearchFieldOnKeyDownEvent) => e.key === 'ArrowDown';
+  const isArrowUp = (e: SafSearchFieldOnKeyDownEvent) => e.key === 'ArrowUp';
 
   const handleKeyDown = (e: SafSearchFieldOnKeyDownEvent) => {
     const safListboxRef = listBoxContainer?.current?.firstChild as SafListboxInstance | null;
