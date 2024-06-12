@@ -1,0 +1,14 @@
+.contact-us-page {
+    &-header {
+        padding: 2.5rem;
+
+        &-title {
+            font: var(--saf-type-heading-default-3xl-strong-standard);
+            color: var(--saf-color-black);
+        }
+    }
+
+    &-content {
+        padding: 0 2.5rem;
+    }
+}
